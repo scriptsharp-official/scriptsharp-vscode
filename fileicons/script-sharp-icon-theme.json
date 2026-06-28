@@ -1,0 +1,15 @@
+{
+  "_info": "Script# File Icon Theme",
+  "iconDefinitions": {
+    "_scriptsharp": {
+      "iconPath": "../images/file-icon.svg"
+    }
+  },
+  "fileExtensions": {
+    "script#": "_scriptsharp",
+    "scriptsharp": "_scriptsharp"
+  },
+  "languageIds": {
+    "script-sharp": "_scriptsharp"
+  }
+}

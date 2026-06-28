@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#F5C400"/>
+  <text x="42" y="360" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="340" fill="#111111" letter-spacing="-10">S</text>
+  <rect x="298" y="108" width="44" height="296" rx="4" fill="#111111"/>
+  <rect x="388" y="108" width="44" height="296" rx="4" fill="#111111"/>
+  <rect x="272" y="200" width="192" height="46" rx="4" fill="#111111"/>
+  <rect x="272" y="296" width="192" height="46" rx="4" fill="#111111"/>
+</svg>

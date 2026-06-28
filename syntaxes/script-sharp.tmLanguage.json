@@ -1,0 +1,238 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Script#",
+  "scopeName": "source.script-sharp",
+  "fileTypes": ["script#", "scriptsharp"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#keywords" },
+    { "include": "#declarations" },
+    { "include": "#ui_widgets" },
+    { "include": "#builtins" },
+    { "include": "#types" },
+    { "include": "#numbers" },
+    { "include": "#operators" },
+    { "include": "#punctuation" },
+    { "include": "#functions" },
+    { "include": "#constants" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.script-sharp",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.script-sharp",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "beginCaptures": { "0": { "name": "punctuation.definition.comment.begin" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.comment.end" } }
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.template.script-sharp",
+          "begin": "`",
+          "end": "`",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end" } },
+          "patterns": [
+            {
+              "name": "meta.template.expression.script-sharp",
+              "begin": "\\$\\{",
+              "end": "\\}",
+              "beginCaptures": { "0": { "name": "punctuation.definition.template-expression.begin" } },
+              "endCaptures": { "0": { "name": "punctuation.definition.template-expression.end" } },
+              "patterns": [{ "include": "$self" }]
+            },
+            { "name": "constant.character.escape.script-sharp", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.double.script-sharp",
+          "begin": "\"",
+          "end": "\"",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end" } },
+          "patterns": [
+            { "name": "constant.character.escape.script-sharp", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.single.script-sharp",
+          "begin": "'",
+          "end": "'",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end" } },
+          "patterns": [
+            { "name": "constant.character.escape.script-sharp", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.script-sharp",
+          "match": "\\b(if|else|for|while|when|in|return|break|continue|try|catch|finally|throw|default)\\b"
+        },
+        {
+          "name": "keyword.declaration.script-sharp",
+          "match": "\\b(let|var|val|func|async|await|class|data|object|import|export|from|new)\\b"
+        },
+        {
+          "name": "variable.language.script-sharp",
+          "match": "\\b(this|self)\\b"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "name": "meta.function.script-sharp",
+          "match": "\\b(func)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?:\\(\"([^\"]+)\"\\))?",
+          "captures": {
+            "1": { "name": "keyword.declaration.script-sharp" },
+            "2": { "name": "entity.name.function.script-sharp" },
+            "3": { "name": "string.quoted.double.script-sharp" }
+          }
+        },
+        {
+          "name": "meta.class.script-sharp",
+          "match": "\\b(class|data\\s+class|object)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.script-sharp" },
+            "2": { "name": "entity.name.type.class.script-sharp" }
+          }
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "entity.name.type.script-sharp",
+          "match": "\\b(Int|Float|String|Bool|Null|Array|Object|Any|Unit|Nothing|Function|Class|Instance)\\b"
+        }
+      ]
+    },
+    "ui_widgets": {
+      "patterns": [
+        {
+          "name": "support.function.ui.script-sharp",
+          "match": "\\b(VStack|HStack|Text|Spacer|Divider)\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.script-sharp",
+          "match": "\\b(println|print|eprintln|input|range|len|typeof|assert|exit|panic|isNull|isInt|isFloat|isString|isBool|isArray|isObject|toInt|toFloat|toBool|toString)\\b"
+        },
+        {
+          "name": "support.class.script-sharp",
+          "match": "\\b(Math|Number|console|JSON)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.script-sharp",
+          "match": "\\b\\d[\\d_]*\\.\\d[\\d_]*([eE][+-]?\\d+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.script-sharp",
+          "match": "\\b\\d[\\d_]*\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.true.script-sharp",
+          "match": "\\btrue\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.script-sharp",
+          "match": "\\bfalse\\b"
+        },
+        {
+          "name": "constant.language.null.script-sharp",
+          "match": "\\bnull\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.null-safety.script-sharp",
+          "match": "\\?\\."
+        },
+        {
+          "name": "keyword.operator.null-coalesce.script-sharp",
+          "match": "\\?\\?"
+        },
+        {
+          "name": "keyword.operator.arrow.script-sharp",
+          "match": "->"
+        },
+        {
+          "name": "keyword.operator.range.script-sharp",
+          "match": "\\.\\."
+        },
+        {
+          "name": "keyword.operator.comparison.script-sharp",
+          "match": "(==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.logical.script-sharp",
+          "match": "(&&|\\|\\||!)"
+        },
+        {
+          "name": "keyword.operator.assignment.script-sharp",
+          "match": "(\\+=|-=|\\*=|/=|=)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.script-sharp",
+          "match": "[+\\-*/%]"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        { "name": "punctuation.definition.block.script-sharp", "match": "[{}]" },
+        { "name": "punctuation.definition.parameters.script-sharp", "match": "[()]" },
+        { "name": "punctuation.definition.array.script-sharp", "match": "[\\[\\]]" },
+        { "name": "punctuation.separator.comma.script-sharp", "match": "," },
+        { "name": "punctuation.separator.colon.script-sharp", "match": ":" },
+        { "name": "punctuation.accessor.dot.script-sharp", "match": "\\." }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.call.script-sharp",
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "entity.name.function.script-sharp" }
+          }
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.script-sharp",
+          "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    }
+  }
+}

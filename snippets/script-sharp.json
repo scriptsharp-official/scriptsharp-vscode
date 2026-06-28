@@ -1,0 +1,97 @@
+{
+  "Function": {
+    "prefix": ["func", "fn"],
+    "body": ["func ${1:name}(${2:params}) {", "\t${3:// body}", "}"],
+    "description": "Script# function declaration"
+  },
+  "Named Function (Main)": {
+    "prefix": ["funcmain", "main"],
+    "body": ["func main(\"${1:EntryPoint}\") {", "\t${2:// body}", "}"],
+    "description": "Script# named function (with alias)"
+  },
+  "Async Function": {
+    "prefix": ["asyncfunc", "afn"],
+    "body": ["async func ${1:name}(${2:params}) {", "\tlet result = await ${3:operation}", "\treturn result", "}"],
+    "description": "Script# async function"
+  },
+  "Class": {
+    "prefix": "class",
+    "body": ["class ${1:Name} {", "\tlet ${2:field}: ${3:Type}", "", "\tfunc init(${2:field}: ${3:Type}) {", "\t\tthis.${2:field} = ${2:field}", "\t}", "", "\t${4:// methods}", "}"],
+    "description": "Script# class declaration"
+  },
+  "Data Class": {
+    "prefix": "dataclass",
+    "body": ["data class ${1:Name}(${2:field}: ${3:Type})"],
+    "description": "Script# data class"
+  },
+  "Object Singleton": {
+    "prefix": "object",
+    "body": ["object ${1:Name} {", "\t${2:field} = ${3:value}", "", "\tfunc ${4:method}() {", "\t\t${5:// body}", "\t}", "}"],
+    "description": "Script# object singleton"
+  },
+  "If Else": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) {", "\t${2:// then}", "} else {", "\t${3:// else}", "}"],
+    "description": "If/else statement"
+  },
+  "For In": {
+    "prefix": "for",
+    "body": ["for (${1:item} in ${2:collection}) {", "\t${3:println(item)}", "}"],
+    "description": "For-in loop"
+  },
+  "While": {
+    "prefix": "while",
+    "body": ["while (${1:condition}) {", "\t${2:// body}", "}"],
+    "description": "While loop"
+  },
+  "When": {
+    "prefix": "when",
+    "body": ["when (${1:value}) {", "\t${2:case1} -> ${3:action}", "\telse -> ${4:defaultAction}", "}"],
+    "description": "When expression (pattern matching)"
+  },
+  "Try Catch": {
+    "prefix": "try",
+    "body": ["try {", "\t${1:// risky code}", "} catch (${2:e}) {", "\tprintln(`Error: \\${${2:e}.message}`)", "} finally {", "\t${3:// cleanup}", "}"],
+    "description": "Try/catch/finally"
+  },
+  "Import": {
+    "prefix": "import",
+    "body": ["import { ${1:name} } from \"${2:module}\""],
+    "description": "Import statement"
+  },
+  "Export Func": {
+    "prefix": "exportfunc",
+    "body": ["export func ${1:name}(${2:params}) {", "\t${3:// body}", "}"],
+    "description": "Export a function"
+  },
+  "Let Variable": {
+    "prefix": "let",
+    "body": ["let ${1:name} = ${2:value}"],
+    "description": "Let variable declaration"
+  },
+  "Val Constant": {
+    "prefix": "val",
+    "body": ["val ${1:NAME} = ${2:value}"],
+    "description": "Val constant (immutable)"
+  },
+  "Arrow Lambda": {
+    "prefix": ["lambda", "arrow"],
+    "body": ["${1:x} -> ${2:x * 2}"],
+    "description": "Arrow lambda expression"
+  },
+  "Println": {
+    "prefix": ["println", "log"],
+    "body": ["println(${1:`${2:value}`})"],
+    "description": "Print line"
+  },
+  "Template String": {
+    "prefix": "tmpl",
+    "body": ["`${1:text} \\${${2:variable}}`"],
+    "description": "Template string with interpolation"
+  },
+  "Null Safety": {
+    "prefix": ["nullsafe", "nn"],
+    "body": ["${1:value} ?? ${2:default}"],
+    "description": "Null coalescing"
+  }
+}

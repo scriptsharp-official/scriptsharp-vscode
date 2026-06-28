@@ -1,0 +1,102 @@
+{
+  "name": "script-sharp",
+  "displayName": "Script# (ScriptSharp)",
+  "description": "Language support for Script# (.script#) — syntax highlighting, snippets, and file icons",
+  "version": "1.0.0",
+  "publisher": "LanguageFoundations",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Programming Languages", "Snippets"],
+  "keywords": ["script#", "scriptsharp", "s#", "ssc", "script-sharp"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scriptsharp/scriptsharp"
+  },
+  "homepage": "https://scriptsharp.dev",
+  "license": "See EULA",
+  "activationEvents": [
+    "onLanguage:script-sharp"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "script-sharp",
+        "aliases": ["Script#", "ScriptSharp", "S#", "script-sharp"],
+        "extensions": [".script#", ".scriptsharp"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/file-icon.svg",
+          "dark": "./images/file-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "script-sharp",
+        "scopeName": "source.script-sharp",
+        "path": "./syntaxes/script-sharp.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "script-sharp",
+        "path": "./snippets/script-sharp.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "script-sharp-icons",
+        "label": "Script# File Icons",
+        "path": "./fileicons/script-sharp-icon-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "scriptsharp.runFile",
+        "title": "Script#: Run File",
+        "icon": "$(play)"
+      },
+      {
+        "command": "scriptsharp.checkSyntax",
+        "title": "Script#: Check Syntax"
+      },
+      {
+        "command": "scriptsharp.openRepl",
+        "title": "Script#: Open REPL"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "resourceLangId == script-sharp",
+          "command": "scriptsharp.runFile",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Script#",
+      "properties": {
+        "scriptsharp.interpreterPath": {
+          "type": "string",
+          "default": "ssc",
+          "description": "Path to the Script# interpreter (ssc)"
+        },
+        "scriptsharp.enableDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable syntax checking on save"
+        },
+        "scriptsharp.formatOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Format Script# files on save"
+        }
+      }
+    }
+  }
+}
